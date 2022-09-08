@@ -1,0 +1,12 @@
+.noise-layer {
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: z('noise-layer');
+  height: 100%;
+  width: 100%;
+  pointer-events: none;
+  background-image: url('/images/noise.gif');
+  background-size: 250px;
+  opacity: calc(8/100);
+}

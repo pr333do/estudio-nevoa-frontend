@@ -1,0 +1,13 @@
+%page {
+  position: relative;
+  z-index: z('content');
+
+  min-height: 100vh;
+  height: 100%;
+  width: 100%;
+}
+
+%page__wrapper {
+  color: inherit;
+  min-height: 100vh;
+}

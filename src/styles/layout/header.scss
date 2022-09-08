@@ -1,0 +1,80 @@
+.header {
+  position: fixed;
+  z-index: z('header');
+  top: 0;
+  left: 0;
+  width: 100%;
+
+  pointer-events: none;
+}
+
+.header__wrapper {
+  @extend %cover;
+}
+
+.header__btn {
+  @extend %center;
+
+  position: absolute;
+  z-index: 1;
+  top: 2rem;
+  right: 2rem;
+
+  width: 10rem;
+  height: 10rem;
+  border-radius: 50%;
+
+  background-color: var(--surface-01-clr);
+
+  pointer-events: all;
+
+  >svg {
+    width: 2.4rem;
+    height: 2.4rem;
+  }
+}
+
+.header__menu {
+  @extend %cover;
+  @extend %center;
+  justify-content: flex-start;
+
+  z-index: 2;
+  height: 100vh;
+
+  background-color: var(--surface-02-clr);
+
+  pointer-events: all;
+
+  transition: 0.3s ease;
+
+  &[data-open="false"] {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+.header__menu__nav {}
+
+.header__menu__list {
+  --gap: 2.6rem;
+  @extend %flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.header__menu__item {
+  --gap: 5rem;
+  @extend %center;
+
+  &::before {
+    content: '';
+    width: 64rem;
+    height: 0.4rem;
+    background-color: var(--surface-03-clr);
+  }
+}
+
+.header__menu__link {
+  @extend %title-64;
+}
