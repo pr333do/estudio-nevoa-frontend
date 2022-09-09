@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { CSSProperties, useState } from 'react'
 
 import MenuIcon from 'assets/menu.svg'
 
@@ -20,7 +20,11 @@ const Header = () => {
         <div className="header__menu" data-open={isMenuOpen}>
           <nav className="header__menu__nav">
             <ul className="header__menu__list">
-              <li className="header__menu__item">
+              <li
+                className="header__menu__item"
+                style={{ '--order': 0 } as CSSProperties}
+                data-open={isMenuOpen}
+              >
                 <a
                   href="#studio"
                   className="header__menu__link"
@@ -29,7 +33,11 @@ const Header = () => {
                   O Estúdio
                 </a>
               </li>
-              <li className="header__menu__item">
+              <li
+                className="header__menu__item"
+                style={{ '--order': 1 } as CSSProperties}
+                data-open={isMenuOpen}
+              >
                 <a
                   href="#about"
                   className="header__menu__link"
@@ -38,7 +46,11 @@ const Header = () => {
                   Quem somos
                 </a>
               </li>
-              <li className="header__menu__item">
+              <li
+                className="header__menu__item"
+                style={{ '--order': 2 } as CSSProperties}
+                data-open={isMenuOpen}
+              >
                 <a
                   href="#projects"
                   className="header__menu__link"
@@ -47,7 +59,11 @@ const Header = () => {
                   Portfolio
                 </a>
               </li>
-              <li className="header__menu__item">
+              <li
+                className="header__menu__item"
+                style={{ '--order': 3 } as CSSProperties}
+                data-open={isMenuOpen}
+              >
                 <a
                   href="#contact"
                   className="header__menu__link"
