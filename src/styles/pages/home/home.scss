@@ -15,39 +15,84 @@
 }
 
 
+.bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-image: url('/images/home-bg.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
 
 .home__wrapper {
-  --gap: 32rem;
+  --gap: 48rem;
   @extend %page__wrapper;
   @extend %center;
   flex-direction: column;
 
-  background-image: url('/images/home-bg.jpg');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-attachment: fixed;
+
+  @include media ("<phone") {
+    --gap: 0rem;
+  }
 }
 
 .home__section {
   position: relative;
   @extend %center;
   width: 100%;
-  min-height: 100vh;
+  min-height: min-content;
   height: 100%;
+  padding-block: 24rem;
   overflow: hidden;
 
   &.--col {
     flex-direction: column;
   }
 
+  &#index {
+    min-height: 100vh;
+    padding-block: unset;
+  }
+
   &#about {
     overflow: visible;
+  }
+
+  &#contact {
+    min-height: 400px;
+    height: 50vh;
+    padding: unset;
+  }
+
+  @include media ("<phone") {
+
+    &#index {
+      min-height: 90vh;
+    }
+
+    &#about {
+      overflow: hidden;
+      padding-block: 32rem;
+      padding-block-end: 128rem;
+
+    }
+
+
+    &#projects {
+      padding-block-start: 48rem;
+      padding-block-end: 10rem;
+
+    }
+
   }
 }
 
 .home__title {
-  @extend %title-320;
+  @extend %title-280;
   color: var(--text-02-clr);
+  text-transform: uppercase;
 
   &[data-section="about"] {
     position: absolute;
@@ -57,20 +102,31 @@
 
   &[data-section="projects"] {
     position: absolute;
-    right: -4rem;
+    right: 0rem;
     max-width: 5ch;
   }
 
   &[data-section="contact"] {
     position: absolute;
     left: 0;
-    bottom: -3.4rem;
+    bottom: 0rem;
 
 
     max-width: 4ch;
     word-wrap: break-word;
     line-height: 0.84;
   }
+
+  @include media ("<phone") {
+    &[data-section="about"] {
+      top: 6rem;
+    }
+
+    &[data-section="projects"] {
+      top: 14rem;
+    }
+  }
+
 }
 
 .home__img {
@@ -78,6 +134,12 @@
   height: 90rem;
   object-fit: cover;
   object-position: center;
+
+
+  @include media ("<=phone") {
+    height: 14rem;
+    width: 38rem;
+  }
 }
 
 @keyframes suggestScroll {
@@ -110,53 +172,99 @@
   &:hover {
     filter: brightness(0.7);
   }
+
+  @include media ("<phone") {
+    font-size: 1.6rem;
+
+  }
 }
 
 .home__about,
 .home__projects {
   position: relative;
-  min-height: 100vh;
   width: 100%;
+}
+
+.home__block {
+  @extend %center;
+  position: relative;
+  width: min-content;
+  margin-inline-start: 70%;
+
+  @include media ("<phone") {
+    margin-block-start: 10%;
+    margin-inline-start: 40%;
+  }
 }
 
 .home__about__icon,
 .home__projects__icon {
   position: absolute;
-  left: 50%;
+  left: -7.5vw;
   top: 50%;
-  transform: translate(-25%, -50%);
+  transform: translate(-50%, -50%);
   height: 88rem;
+  pointer-events: none;
 
-  transition: 0.6s ease;
+  transition: 0.4s ease;
 
 
   &[data-section="projects"] {
     left: unset;
     right: 0;
-    transform: translate(30%, -50%);
+    transform: translate(35%, -50%);
   }
 
 
   &[data-selected="true"] {
-    left: -8rem;
+    transform: translate(calc(-50% - 50vw), -50%);
+  }
+
+  @include media ("<=phone") {
+    height: 40rem;
+    left: 50vw;
+
+    &[data-section="projects"] {
+      transform: translate(35%, -125%);
+    }
+
+    &[data-selected="true"] {
+      transform: translate(-102.5%, -120%);
+    }
   }
 }
 
 .home__about__list {
-  position: relative;
   --gap: 36rem;
   @extend %center;
   flex-direction: column;
-  z-index: 2;
 
-  padding-block: 14rem;
-  padding-inline-start: 94rem;
+  position: relative;
+  width: min-content;
+  z-index: 2;
+  transform: translate(0%, -15%);
 
   transition: 0.3s ease;
 
   &[data-hidden="true"] {
     opacity: 0;
     visibility: hidden;
+  }
+
+  @include media ("<phone") {
+    --gap: 16rem;
+  }
+}
+
+.home__about__item {
+  @include media ("<phone") {
+    &:nth-of-type(1) {
+      transform: translate(3.2rem, -1.6rem)
+    }
+
+    &:nth-of-type(2) {
+      transform: translate(-3.2rem, -1.8rem)
+    }
   }
 }
 
@@ -177,6 +285,11 @@
       opacity: 1;
       filter: blur(0px);
     }
+  }
+
+  @include media ("<phone") {
+    width: 4rem;
+    height: 4rem;
   }
 }
 
@@ -212,11 +325,18 @@
     visibility: visible;
     filter: blur(0px);
   }
+
+  @include media ("<phone") {
+    --gap: 2.8rem;
+    width: fit-content;
+
+    left: 3.6rem;
+    top: 35%;
+    transform: unset;
+  }
 }
 
-.home__about__close-btn,
-.home__about__controls__prev-btn,
-.home__about__controls__next-btn {
+.home__about__close-btn {
   @extend %center;
 
   position: absolute;
@@ -232,29 +352,34 @@
 
   &[data-section="about-team"] {
     bottom: unset;
-    top: 8rem;
+  }
+
+  @include media ("<phone") {
+    right: 0rem;
+    width: 3.2rem;
+    height: 3.2rem;
+    font-size: 1.6rem;
+
+    &[data-section="about-team"] {
+      bottom: calc(100% + 8.2rem);
+    }
   }
 }
 
 .home__about__controls {
   position: absolute;
   z-index: 1;
-  top: 8rem;
-  right: 0;
+  top: -6rem;
+  right: 0rem;
 
   --gap: 2rem;
   @extend %center;
+
+  @include media ("<phone") {
+    max-width: fit-content;
+    flex-shrink: 1;
+  }
 }
-
-.home__about__controls__prev-btn,
-.home__about__controls__next-btn {
-  position: relative;
-  right: unset;
-  bottom: unset;
-
-  font-size: 3.2rem;
-}
-
 
 
 .home__about__team {
@@ -263,8 +388,8 @@
   flex-direction: column;
 
   position: absolute;
-  top: 6.4rem;
-  left: 78rem;
+  top: 0;
+  left: 42%;
 
   opacity: 0;
   visibility: hidden;
@@ -286,16 +411,53 @@
     pointer-events: all;
 
   }
+
+  @include media ("<phone") {
+    top: 40%;
+    left: 1.8rem;
+    right: 1.8rem;
+  }
 }
 
-.home__about__team__wrapper {}
-
-.home__about__team__list {
+.home__about__team__wrapper {
   position: relative;
   width: 50vw;
+
+  @include media ("<phone") {
+    width: 100%;
+  }
+}
+
+.home__about__team__list {
+  --gap: 3.2rem;
+  @extend %flex;
+
+  transition: 0.4s ease;
+
+  &[data-hidden=true] {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    filter: blur(8px);
+  }
+
+  @include media ("<phone") {
+    flex-wrap: wrap;
+  }
 }
 
 .home__about__team__item {
+  @extend %flex;
+  flex-direction: column;
+  cursor: pointer;
+
+  @include media ("<phone") {
+    flex-basis: 45%;
+  }
+}
+
+
+.home__about__team__focused-item {
   position: absolute;
   top: 0;
   left: 0;
@@ -322,11 +484,20 @@
 
 .home__about__team__member {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, auto);
   grid-gap: 10rem;
   grid-template-areas:
     'img title'
     'p p';
+
+  @include media ("<phone") {
+    grid-gap: 2rem;
+
+    grid-template-areas:
+      'img title'
+      '. p';
+  }
+
 }
 
 .home__about__team__member__img {
@@ -336,6 +507,16 @@
   background-color: var(--surface-02-clr);
   object-fit: cover;
   grid-area: img;
+
+  &.--thumbnail {
+    width: 30rem;
+    height: unset;
+  }
+
+  @include media ("<phone") {
+    min-width: 6rem;
+    height: 18rem;
+  }
 }
 
 .home__about__team__member__title {
@@ -343,18 +524,32 @@
   align-self: center;
 
   grid-area: title;
+
+  &.--thumbnail {
+    @extend %title-40;
+    align-self: unset;
+  }
 }
 
 .home__about__team__member__body {
   grid-area: p;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 10rem;
+  column-count: 2;
+  column-gap: 10rem;
+
+  @include media ("<phone") {
+    column-count: 1;
+
+  }
 }
 
 .home__about__team__member__paragraph {
-  @extend %paragraph-35;
-  max-width: 34ch
+  @extend %paragraph-30;
+  max-width: 34ch;
+  margin-block-end: 2rem;
+
+  @include media ("<phone") {
+    // font-size: 2.4rem;
+  }
 }
 
 
@@ -363,40 +558,114 @@
 }
 
 .home__about__paragraph {
-  @extend %paragraph-35;
+  @extend %paragraph-30;
   max-width: 45ch;
+
+
+  @include media ("<phone") {
+    max-width: 42ch;
+  }
 }
 
-.home__projects__list {
-  margin-block-start: 40rem;
-
-  --gap: 4rem;
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: var(--gap);
+.home__projects__slider-wrapper {
+  position: relative;
   width: fit-content;
+
+  &::after {
+    content: '';
+    z-index: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: calc(100% + 4rem);
+    height: calc(100% + 10rem);
+    background-color: black;
+    transform-origin: center;
+    transform: translate(-50%, -50%);
+    filter: blur(2rem);
+  }
+
+  @include media ("<phone") {
+    &::after {
+      width: 120vw;
+    }
+  }
 }
 
-.home__projects__item {
-  flex-basis: 50%;
-  width: 46rem;
-  height: 27.4rem;
+.home__projects__slider.swiper {
+  width: 103.6rem;
+  padding-inline: 1.8rem;
+  margin-left: unset;
 
-  background-color: var(--surface-02-clr);
+  @include media ("<phone") {
+    width: 100vw;
+    height: calc(100vw / 1.7);
+    padding-inline: 0rem;
+  }
+}
+
+.home__projects__video {
+  position: relative;
+  width: 100rem;
+  object-fit: cover;
+  height: 70rem;
+  border-radius: 1.4rem;
+  overflow: hidden;
+
+  iframe {
+    width: 100%;
+    height: 100%
+  }
+
+  @include media ("<phone") {
+    width: 100vw;
+    height: calc(100vw / 1.7);
+    border-radius: 0;
+  }
+}
+
+.home__projects__prev-btn,
+.home__projects__next-btn {
+  position: absolute;
+  top: 50%;
+  left: 4rem;
+  transform: translate(0%, -50%);
+  z-index: 1;
+
+  @include media ("<phone") {
+    left: 1.6rem;
+  }
+}
+
+.home__projects__next-btn {
+  left: unset;
+  right: 4rem;
+
+  @include media ("<phone") {
+    right: 1.6rem;
+  }
 }
 
 .home__address {
-  @extend %paragraph-35;
+  @extend %paragraph-30;
 
-  position: absolute;
-  bottom: 6.4rem;
-  right: 6.4rem;
-}
+  margin-inline-start: auto;
+  margin-block-start: auto;
+  margin-inline-end: 6rem;
+  margin-block-end: 6rem;
 
-.home__address__link {
-  transition: 0.3s ease;
 
-  &:hover {
-    filter: brightness(0.7);
+
+  a {
+    transition: 0.3s ease;
+
+    &:hover {
+      filter: brightness(0.7);
+    }
+  }
+
+  @include media ("<phone") {
+    margin-inline-end: 1.6rem;
+    margin-block-end: 22rem;
   }
 }

@@ -1,0 +1,20 @@
+.prev-next-btn {
+  @extend %center;
+
+  width: 4rem;
+  height: 4rem;
+  border-radius: 50%;
+  background-color: var(--surface-01-clr);
+
+  font-size: 3.2rem;
+
+
+  @include media ("<phone") {
+
+    width: 3.2rem;
+    height: 3.2rem;
+    overflow: hidden;
+
+    font-size: 1.6rem;
+  }
+}

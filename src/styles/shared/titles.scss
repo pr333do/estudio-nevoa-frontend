@@ -2,10 +2,10 @@
   font-size: 4rem;
   line-height: 100%;
   font-weight: 400;
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue Pro Regular", sans-serif;
 
   @include media ("<phone") {
-    // font-size: 2.4rem;
+    font-size: 1.8rem;
   }
 }
 
@@ -13,10 +13,10 @@
   font-size: 6.4rem;
   line-height: 100%;
   font-weight: 400;
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue Pro Book", sans-serif;
 
   @include media ("<phone") {
-    // font-size: 2.4rem;
+    font-size: 2.4rem;
   }
 }
 
@@ -24,10 +24,10 @@
   font-size: 7rem;
   line-height: 100%;
   font-weight: 400;
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue Pro Book", sans-serif;
 
   @include media ("<phone") {
-    // font-size: 2.4rem;
+    font-size: 3.1rem;
   }
 }
 
@@ -35,20 +35,20 @@
   font-size: 10rem;
   line-height: 120%;
   font-weight: 400;
-  font-family: "Bebas Neue", cursive;
+  font-family: "Bebas Neue Pro Regular", sans-serif;
 
   @include media ("<phone") {
-    // font-size: 2.4rem;
+    font-size: 4rem;
   }
 }
 
-%title-320 {
-  font-size: 32rem;
+%title-280 {
+  font-size: 28rem;
   line-height: 110%;
-  font-weight: 400;
-  font-family: "Bebas Neue", cursive;
+  font-weight: 500;
+  font-family: "Bebas Neue Pro Regular", sans-serif;
 
   @include media ("<phone") {
-    // font-size: 2.4rem;
+    font-size: 12.4rem;
   }
 }

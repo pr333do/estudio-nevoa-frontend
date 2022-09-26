@@ -1,0 +1,24 @@
+{
+  "id": "projects",
+  "label": "Project",
+  "repeatable": true,
+  "status": true,
+  "json": {
+    "Main": {
+      "youtubeURL": {
+        "type": "Embed",
+        "config": {
+          "label": "Video URL",
+          "placeholder": ""
+        }
+      },
+      "title": {
+        "type": "Text",
+        "config": {
+          "label": "Title",
+          "placeholder": ""
+        }
+      }
+    }
+  }
+}

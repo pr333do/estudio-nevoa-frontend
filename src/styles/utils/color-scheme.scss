@@ -1,13 +1,13 @@
 :root {
   --clr-white: 0 100% 100%;
   --clr-black: 0 0% 0%;
-  --clr-red: 2 100% 44%;
+  --clr-off-white: 30 19% 86%;
   --clr-gray-500: 0 0% 85%;
 
   --text-01-clr: hsl(var(--clr-white));
   --text-02-clr: hsl(var(--clr-white) / 0.5);
 
-  --brand-clr: hsl(var(--clr-red));
+  --brand-clr: hsl(var(--clr-off-white));
 
   --border-01-clr: hsl(var(--clr-white));
   --border-02-clr: hsl(var(--clr-white) / 0.3);

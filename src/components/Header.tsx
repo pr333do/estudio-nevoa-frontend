@@ -17,8 +17,12 @@ const Header = () => {
           <MenuIcon />
         </button>
 
-        <div className="header__menu" data-open={isMenuOpen}>
-          <nav className="header__menu__nav">
+        <div
+          className="header__menu"
+          data-open={isMenuOpen}
+          onClick={() => setIsMenuOpen(false)}
+        >
+          <nav className="header__menu__nav" onClick={e => e.stopPropagation()}>
             <ul className="header__menu__list">
               <li
                 className="header__menu__item"
