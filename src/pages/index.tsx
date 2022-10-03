@@ -165,6 +165,7 @@ export default function Home({ content, projects }) {
                         key={member.photo.url}
                         className="home__about__team__item"
                         onClick={() => setTeamIdx(idx)}
+                        data-cursor="pointer"
                       >
                         <img
                           className="home__about__team__member__img --thumbnail"
@@ -273,6 +274,7 @@ export default function Home({ content, projects }) {
                       />
                     </SwiperSlide>
                   ))}
+
                   <PrevNextButton
                     className="home__projects__prev-btn"
                     type="prev"

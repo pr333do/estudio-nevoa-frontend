@@ -1,7 +1,7 @@
 $max-width: 1440px;
 
-$z-indexes: (
-  'noise-layer',
+$z-indexes: ('noise-layer',
+  'cursor',
   'header',
   'content',
 );
