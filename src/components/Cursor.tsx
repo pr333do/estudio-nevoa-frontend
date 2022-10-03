@@ -23,12 +23,12 @@ const Cursor = () => {
   )
 
   useEffect(() => {
-    if (userAgent.device.type === 'undefined') {
+    if (typeof userAgent.device.type === 'undefined') {
       window.addEventListener('mousemove', onMouseMove, false)
     }
 
     return () => {
-      if (userAgent.device.type === 'undefined') {
+      if (typeof userAgent.device.type === 'undefined') {
         window.removeEventListener('mousemove', onMouseMove, false)
       }
     }
