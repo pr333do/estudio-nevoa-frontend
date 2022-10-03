@@ -1,7 +1,10 @@
 import gsap from 'gsap'
 import { useCallback, useEffect, useRef, useState } from 'react'
 
+import { useUserPreferences } from 'contexts/UserPreferencesContext'
+
 const Cursor = () => {
+  const { userAgent } = useUserPreferences()
   const cursor = useRef()
   const [hasMoved, setHasMoved] = useState(false)
   const [isPointer, setIsPointer] = useState(false)
@@ -20,10 +23,14 @@ const Cursor = () => {
   )
 
   useEffect(() => {
-    window.addEventListener('mousemove', onMouseMove, false)
+    if (userAgent.device.type === 'undefined') {
+      window.addEventListener('mousemove', onMouseMove, false)
+    }
 
     return () => {
-      window.removeEventListener('mousemove', onMouseMove, false)
+      if (userAgent.device.type === 'undefined') {
+        window.removeEventListener('mousemove', onMouseMove, false)
+      }
     }
   }, [hasMoved])
 

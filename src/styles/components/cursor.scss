@@ -12,6 +12,10 @@
   &.pointer {
     transform: translate(-50%, -50%) scale(0.5);
   }
+
+  @include media ("<phone") {
+    display: none;
+  }
 }
 
 .cursor__container {
