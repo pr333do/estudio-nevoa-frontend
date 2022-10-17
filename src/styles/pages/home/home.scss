@@ -75,7 +75,6 @@
     &#about {
       overflow: hidden;
       padding-block: 32rem;
-      // padding-block-end: 128rem;
 
     }
 
@@ -401,11 +400,10 @@
 
   opacity: 0;
   visibility: hidden;
+  max-height: 0;
   filter: blur(8px);
 
-  transition: 0.4s;
-  transition-timing-function: ease-out;
-  transition-delay: 0s;
+  transition: opacity 0.4s ease-out, filter 0.4s ease-out, max-height 0s linear 0.4s;
 
   pointer-events: none;
 
@@ -417,7 +415,7 @@
     filter: blur(0px);
 
     pointer-events: all;
-
+    max-height: 120rem;
   }
 
   @include media ("<phone") {
