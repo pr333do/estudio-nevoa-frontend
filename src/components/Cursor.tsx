@@ -32,7 +32,7 @@ const Cursor = () => {
         window.removeEventListener('mousemove', onMouseMove, false)
       }
     }
-  }, [hasMoved])
+  }, [onMouseMove, userAgent])
 
   useEffect(() => {
     let elements = []
